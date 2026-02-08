@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>The Cherry Orchard</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -35,13 +34,10 @@ body{
   max-width:1000px;
   margin:40px auto;
   padding:25px;
-
-  /* Glassmorphism */
   background:rgba(255,255,255,0.75);
   backdrop-filter: blur(8px);
   border-radius:15px;
 
-  /* Pastel Gradient Border */
   border:3px solid transparent;
   background-image:
     linear-gradient(white, white),
@@ -64,6 +60,23 @@ img{
   max-width:100%;
   display:block;
   margin:20px auto;
+}
+
+/* ===== Decorative HR ===== */
+hr{
+  border:none;
+  height:3px;
+  width:70%;
+  margin:25px auto;
+  background:linear-gradient(45deg,#f7c6ff,#d8b4ef,#ffc0cb);
+  border-radius:10px;
+}
+
+/* ===== SVG Divider ===== */
+.svg-divider{
+  display:block;
+  margin:0 auto 15px auto;
+  width:80px;
 }
 
 /* ===== Navigation Buttons ===== */
@@ -100,7 +113,6 @@ footer{
 
 /* ===== Mobile Optimization ===== */
 @media(max-width:768px){
-
   .content-box{
     margin:15px;
     padding:15px;
@@ -126,7 +138,6 @@ footer{
 <img src="images/cherry-icon.png" class="cherry" style="left:40%; animation-delay:4s;">
 <img src="images/cherry-icon.png" class="cherry" style="left:70%; animation-delay:8s;">
 
-<!-- Main Content Box -->
 <div class="content-box">
 
 <header></header>
@@ -135,6 +146,16 @@ footer{
 
 <h1 style="text-align:center;">The Cherry Orchard</h1>
 <h2 style="text-align:center;">Welcome to CherrySerenity.com</h2>
+
+<!-- Cherry SVG Divider -->
+<svg class="svg-divider" viewBox="0 0 64 64">
+  <circle cx="22" cy="42" r="10" fill="#ff4d6d"/>
+  <circle cx="42" cy="42" r="10" fill="#c9184a"/>
+  <path d="M22 32 Q20 10 32 18" stroke="green" stroke-width="3" fill="none"/>
+  <path d="M42 32 Q40 5 32 18" stroke="green" stroke-width="3" fill="none"/>
+</svg>
+
+<hr>
 
 <p>
 This website is a central hub where you can find information about my Twitch channel,
