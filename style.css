@@ -1,0 +1,12 @@
+body {
+  max-width: 1000px;
+  margin: auto;
+  background: linear-gradient(to bottom, #999 0%, #000 100%);
+  font-family: Arial, Helvetica, sans-serif;
+}
+#wrapper { background: white; border: 3px solid pink; }
+nav { text-align: center; background: #777; padding: 10px; }
+nav a { color: white; text-decoration: none; margin: 0 10px; }
+.selected { font-weight: bold; }
+main { padding: 30px; text-align: center; }
+footer { background: #ffc0cb; padding: 15px; text-align: center; }
