@@ -1,0 +1,252 @@
+/* site_WORKING.css (cleaned layout) */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body{
+  font-family: Arial, sans-serif;
+  color:#111;
+  background: #f8f3ff;
+}
+
+/* Floating cherries (optional) */
+.cherry{
+  position:fixed;
+  width:40px;
+  animation: float 12s linear infinite;
+  opacity:0.35;
+  pointer-events:none;
+}
+.cherry1{ left:10%; animation-delay:0s; }
+.cherry2{ left:40%; animation-delay:4s; }
+.cherry3{ left:70%; animation-delay:8s; }
+@keyframes float{
+  0%{ transform:translateY(100vh); }
+  100%{ transform:translateY(-120px); }
+}
+
+/* Main card */
+.content-box{
+  max-width: 980px;
+  margin: 24px auto;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  border: 3px solid #d8b4ef;
+}
+
+/* Banner */
+header.site-header{
+  background: url("images/orchard.jpg") center/cover no-repeat;
+  height: 260px;
+}
+
+/* Top nav */
+nav.site-nav{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  text-align: center;
+  padding: 12px 10px;
+}
+
+/* Nav list structure (required for Lists assignment) */
+nav.site-nav ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;   /* mobile: vertical */
+  align-items: center;
+  gap: 10px;
+}
+nav.site-nav li{ width: 100%; }
+
+nav.site-nav a{
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(45deg,#f7c6ff,#d8b4ef);
+  padding: 10px 16px;
+  border-radius: 999px;
+  color: #111;
+  font-weight: 700;
+  font-size: 1.35em;
+  width: 92%;
+  max-width: 260px;
+  margin: 0 auto;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+nav.site-nav a:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.16);
+}
+
+/* desktop: horizontal nav */
+@media only screen and (min-width: 640px){
+  nav.site-nav ul{
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  nav.site-nav li{ width: auto; }
+  nav.site-nav a{
+    width: auto;
+    max-width: none;
+    margin: 6px;
+  }
+}
+
+main{
+  padding: 22px 26px;
+  line-height: 1.55;
+}
+.center-text{ text-align:center; }
+h1{ margin-top: 8px; margin-bottom: 6px; }
+h2{ margin-top: 18px; }
+
+/* Images */
+img{ max-width: 100%; height: auto; display: block; }
+main img{
+  max-width: 720px;
+  width: 100%;
+  margin: 18px auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+/* 2-column list */
+.two-col{
+  columns: 2;
+  column-gap: 28px;
+  padding-left: 18px;
+  margin-top: 10px;
+}
+.two-col li{ break-inside: avoid; margin: 4px 0; }
+
+/* Abbr */
+abbr[title]{ text-decoration: underline dotted; cursor: help; }
+
+/* Address cards */
+.address-card{
+  background: #faf6ff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin: 10px 0;
+  font-style: normal;
+}
+
+/* Footer */
+footer.site-footer{
+  background:#d8b4ef;
+  padding: 16px 18px;
+  text-align:center;
+  font-weight: 700;
+}
+
+@media (max-width: 720px){
+  header.site-header{ height: 200px; }
+  main{ padding: 18px 16px; }
+  .two-col{ columns: 1; }
+}
+
+/* ============ RESUME-ONLY STYLES ============ */
+body.resume-page{
+  background:#f8f8f8;
+  font-family: Georgia, serif;
+}
+
+body.resume-page .content-box{
+  max-width: 900px;
+  margin: 30px auto;
+  background: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+body.resume-page header.site-header{
+  display:none;
+}
+
+body.resume-page nav.site-nav{
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+body.resume-page main{
+  padding: 40px;
+  border-left: 4px solid #ff69b4;
+  border-right: 4px solid #ff69b4;
+}
+
+body.resume-page h1{
+  text-align:center;
+  margin-top: 0;
+  font-size: 32px;
+}
+
+body.resume-page h2{
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 6px;
+  margin-top: 22px;
+}
+
+body.resume-page footer.site-footer{
+  border-radius: 0;
+}
+
+
+
+/* ===========================
+   PORTFOLIO GRID (RWD)
+   1 column on phone
+   2 columns on desktop
+   =========================== */
+
+/* Phone: 1 column */
+.portfolio-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.portfolio-grid figure{
+  margin: 0;
+  text-align: center;
+}
+
+/* Override main img rules so grid images behave */
+.portfolio-grid img{
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.portfolio-grid figcaption{
+  margin-top: 8px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Desktop: 2 FULL columns */
+@media (min-width: 768px){
+  .portfolio-grid{
+    grid-template-columns: repeat(2, 320px);
+    justify-content: center;
+  }
+
+  .portfolio-grid img{
+    max-width: 320px;
+  }
+}
