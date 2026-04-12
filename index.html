@@ -9,15 +9,16 @@
 </head>
 <body class="home-page">
   <nav class="site-nav signpost-nav" aria-label="Primary">
-    <ul class="nav-list">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#newsletter">Newsletter</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="resume.html">Resume</a></li>
-      <li><a href="transcript.html">Transcript</a></li>
-    </ul>
+  <ul class="nav-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="js.htm">JavaScript</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="transcript.html">Transcript</a></li>
+  </ul>
   </nav>
 
   <header class="hero">
@@ -95,7 +96,7 @@
     <section class="parchment-box links-box">
       <p class="section-kicker">Explore More</p>
       <h2>Separate Pages</h2>
-      <div class="page-links">--
+      <div class="page-links">
         <a class="mini-card" href="portfolio.html">
           <h3>Portfolio</h3>
           <p>Livestream screenshots and creative highlights.</p>
@@ -271,40 +272,19 @@
     </table>
   </form>
 </section>
-      <tr>
-        <td class="label-cell">Education</td>
-        <td>
-          <input type="checkbox" name="AS" id="AS" value="AS">
-          <label for="AS">AS</label>
-
-          <input type="checkbox" name="BS" id="BS" value="BS">
-          <label for="BS">BS</label>
-        </td>
-      </tr>
-
-      <tr>
-        <td class="label-cell">
-          <span class="required">*</span> <label for="Comments">Comments</label>
-        </td>
-        <td>
-          <textarea name="Comments" id="Comments" cols="40" rows="4" placeholder="Enter feedback here" required></textarea>
-        </td>
-      </tr>
-
-      <tr>
-        <td class="label-cell">Actions</td>
-        <td>
-          <input type="reset" value="Reset">
-          <input type="submit" value="Submit">
-        </td>
-      </tr>
-    </table>
-  </form>
-</section></section>
   </main>
 
   <footer class="site-footer">
     <p>Thanks for wandering through the orchard.</p>
+<div style="font-size: 0.8em; text-align: center; color: #6c5a61; margin-top: 1rem;">
+  <script>
+    var update = new Date(document.lastModified);
+    var month = update.getMonth() + 1;
+    var date = update.getDate();
+    var year = update.getFullYear();
+    document.write("Last Updated - " + month + "/" + date + "/" + year);
+  </script>
+</div>
   </footer>
 </body>
 </html>
