@@ -476,9 +476,11 @@ h1, h2, h3 { color: #6b4340; }
 /* subtle hover effect for ✨ polish ✨ */
 .orchard-table tr:hover td {
   background-color: rgba(255, 230, 235, 0.9);
+}
+
 .contact-box form {
   margin-top: 8px;
-}
+}}
 
 .orchard-table input[type="text"],
 .orchard-table input[type="email"],
