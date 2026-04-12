@@ -4,140 +4,378 @@
   <meta charset="utf-8">
   <title>JavaScript in the Orchard | Cherry Serenity</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Cherry Serenity's JavaScript interactive page.">
+  <meta name="description" content="Cherry Serenity's JavaScript page with alerts, prompts, calculations, image effects, a slideshow, and a popup window.">
   <link rel="stylesheet" href="site.css">
+
+  <style>
+    .js-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .js-item h3 {
+      margin-top: 0;
+      color: #7a2f4c;
+    }
+
+    .js-demo {
+      margin-top: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(122, 47, 76, 0.18);
+      border-radius: 14px;
+      background: rgba(255, 250, 252, 0.75);
+    }
+
+    .js-button,
+    .js-calc button,
+    .js-popup-btn {
+      background: #b86b89;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      margin-top: 0.5rem;
+    }
+
+    .js-button:hover,
+    .js-calc button:hover,
+    .js-popup-btn:hover {
+      opacity: 0.92;
+    }
+
+    .hover-link {
+      color: #8e4267;
+      font-weight: bold;
+      text-decoration: none;
+      border-bottom: 2px dotted #c98aa2;
+    }
+
+    .prompt-answer,
+    .calc-result {
+      margin-top: 0.75rem;
+      font-weight: bold;
+      color: #6b2d45;
+    }
+
+    .js-calc label {
+      display: block;
+      margin-top: 0.75rem;
+      font-weight: bold;
+    }
+
+    .js-calc input[type="number"] {
+      width: 100%;
+      max-width: 260px;
+      padding: 0.55rem;
+      border-radius: 8px;
+      border: 1px solid #cfa7b8;
+      font: inherit;
+    }
+
+    .feature-wrap,
+    .slideshow-wrap {
+      text-align: center;
+    }
+
+    .feature-wrap img,
+    .slideshow-wrap img {
+      width: 100%;
+      max-width: 520px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      transition: transform 0.25s ease;
+    }
+
+    .feature-caption,
+    .slide-caption {
+      margin-top: 0.75rem;
+      font-style: italic;
+    }
+
+    .slide-controls {
+      margin-top: 1rem;
+    }
+
+    .slide-controls button {
+      margin: 0 0.35rem;
+    }
+
+    .last-updated {
+      font-size: 0.8em;
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #6c5a61;
+    }
+  </style>
 </head>
 <body class="sub-page">
+  <nav class="site-nav signpost-nav" aria-label="Primary">
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#newsletter">Newsletter</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="js.htm">JavaScript</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="transcript.html">Transcript</a></li>
+    </ul>
+  </nav>
 
-<nav class="site-nav signpost-nav">
-  <ul class="nav-list">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#newsletter">Newsletter</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="resume.html">Resume</a></li>
-    <li><a href="transcript.html">Transcript</a></li>
-  </ul>
-</nav>
+  <main class="content-box page-shell">
+    <section class="parchment-box page-intro">
+      <p class="section-kicker">Interactive Orchard Magic</p>
+      <h1 class="center-text">JavaScript in the Orchard</h1>
+      <p class="center-text">
+        A little collection of interactive features I built to make this site feel more alive, cozy, and just a bit magical.
+      </p>
+    </section>
 
-<main class="content-box page-shell">
+    <section class="parchment-box">
+      <ol class="js-grid">
+        <li class="js-item">
+          <h3>#1 Mouseover Alert</h3>
+          <p>Hover below for a tiny welcome message from the orchard ✨</p>
+          <div class="js-demo">
+            <a href="#"
+               class="hover-link"
+               onmouseover="showOrchardHoverAlert(); return false;">
+              Hover here to enter the orchard
+            </a>
+          </div>
+        </li>
 
-<section class="parchment-box page-intro">
-  <h1 class="center-text">JavaScript in the Orchard</h1>
-  <p class="center-text">
-    A little collection of interactive features I built to make this site feel more alive, cozy, and just a bit magical.
-  </p>
-</section>
+        <li class="js-item">
+          <h3>#2 Alert Button</h3>
+          <p>A tiny reminder because sometimes we need one 💗</p>
+          <div class="js-demo">
+            <button class="js-button" onclick="showStreamAlert()">Show Stream Tip</button>
+          </div>
+        </li>
 
-<section class="parchment-box">
-<ol>
+        <li class="js-item">
+          <h3>#3 Prompt Question and Answer</h3>
+          <p>Tell me what cozy games you think belong in the orchard 🌿</p>
+          <div class="js-demo">
+            <button class="js-button" onclick="askFavoriteGame()">Answer the Orchard Question</button>
+            <div id="promptAnswer" class="prompt-answer"></div>
+          </div>
+        </li>
 
-<li>
-<h3>#1 Mouseover Alert</h3>
-<p>Hover below for a tiny welcome message from the orchard ✨</p>
-<a href="#" onmouseover="hoverAlert()">Hover here</a>
-</li>
+        <li class="js-item">
+          <h3>#4 document.write Last Update</h3>
+          <p>
+            This page keeps track of when it was last updated, because the orchard is always growing.
+          </p>
+          <div class="js-demo">
+            <p>Scroll to the bottom of this page to see the JavaScript date output.</p>
+          </div>
+        </li>
 
-<li>
-<h3>#2 Button Alert</h3>
-<p>A tiny reminder because sometimes we need one 💗</p>
-<button onclick="buttonAlert()">Click me</button>
-</li>
+        <li class="js-item">
+          <h3>#5 Calculation Form</h3>
+          <p>
+            A little estimator for building a cozy stream setup, because aesthetics matter and so does the budget 😌
+          </p>
+          <div class="js-demo js-calc">
+            <label for="overlayCount">Number of overlay screens:</label>
+            <input type="number" id="overlayCount" min="0" value="3">
 
-<li>
-<h3>#3 Prompt</h3>
-<p>Tell me what cozy games you think belong in the orchard 🌿</p>
-<button onclick="askGame()">Answer</button>
-<p id="answer"></p>
-</li>
+            <label for="emoteCount">Number of emotes:</label>
+            <input type="number" id="emoteCount" min="0" value="5">
 
-<li>
-<h3>#4 Last Updated</h3>
-<p>This page keeps track of when it was last updated, because the orchard is always growing.</p>
-</li>
+            <label for="panelCount">Number of custom panels:</label>
+            <input type="number" id="panelCount" min="0" value="4">
 
-<li>
-<h3>#5 Calculator</h3>
-<p>A little estimator for building a cozy stream setup, because aesthetics matter and so does the budget 😌</p>
-<input id="num1" type="number" value="2">
-<input id="num2" type="number" value="3">
-<button onclick="calc()">Calculate</button>
-<p id="calcResult"></p>
-</li>
+            <br>
+            <button type="button" onclick="calculateSetupTotal()">Calculate Total</button>
+            <div id="calcResult" class="calc-result"></div>
+          </div>
+        </li>
 
-<li>
-<h3>#6 Image Effect</h3>
-<p>A rotating peek into some of my favorite stream moments ✨</p>
-<img id="img" src="images/sims1.png" width="300">
-<button onclick="changeImg()">Next</button>
-</li>
+        <li class="js-item">
+          <h3>#6 Internal JavaScript Special Effect</h3>
+          <p>
+            A rotating peek into some of my favorite stream moments ✨
+          </p>
+          <div class="js-demo feature-wrap">
+            <img id="featureImage" src="images/sims1.png" alt="Sims 3 livestream screenshot one">
+            <p id="featureCaption" class="feature-caption">Some moments from my streams.</p>
+            <button class="js-button" onclick="nextFeatureImage()">Show Next Feature</button>
+          </div>
+        </li>
 
-<li>
-<h3>#7 Slideshow</h3>
-<p>A little slideshow of cozy chaos and creativity from my streams 💗</p>
-<img id="slide" src="images/sims1.png" width="300">
-</li>
+        <li class="js-item">
+          <h3>#7 External JavaScript Slideshow</h3>
+          <p>
+            A little slideshow of cozy chaos and creativity from my streams 💗
+          </p>
+          <div class="js-demo slideshow-wrap">
+            <img id="externalSlide" src="images/sims1.png" alt="Featured Cherry Serenity slideshow image">
+            <p id="externalCaption" class="slide-caption">Featured screenshot from my Sims 3 livestreams.</p>
 
-<li>
-<h3>#8 Popup</h3>
-<p>A tiny pop-up moment, because I had to add a little extra magic somewhere ✨</p>
-<button onclick="popup()">Open</button>
-</li>
+            <div class="slide-controls">
+              <button class="js-button" onclick="previousSlide()">Previous</button>
+              <button class="js-button" onclick="nextSlide()">Next</button>
+            </div>
+          </div>
+        </li>
 
-</ol>
+        <li class="js-item">
+          <h3>#8 JavaScript Pop-Up Window</h3>
+          <p>
+            A tiny pop-up moment, because I had to add a little extra magic somewhere ✨
+          </p>
+          <div class="js-demo">
+            <button class="js-popup-btn" onclick="openOrchardPopup()">Open Orchard Pop-Up</button>
+          </div>
+        </li>
+      </ol>
 
-<div>
-<script>
-var d = new Date(document.lastModified);
-document.write("Last Updated - " + (d.getMonth()+1) + "/" + d.getDate() + "/" + d.getFullYear());
-</script>
-</div>
+      <div class="last-updated">
+        <script>
+          var update = new Date(document.lastModified);
+          var month = update.getMonth() + 1;
+          var date = update.getDate();
+          var year = update.getFullYear();
+          document.write("Last Updated - " + month + "/" + date + "/" + year);
+        </script>
+      </div>
+    </section>
+  </main>
 
-</section>
-</main>
+  <footer class="site-footer">
+    <p>Thanks for wandering through the orchard.</p>
+  </footer>
 
-<footer>
-<p>Thanks for wandering through the orchard.</p>
-</footer>
+  <script>
+    function showOrchardHoverAlert() {
+      alert("Welcome to the orchard 🌸 cozy vibes, soft glow, and a little bit of chaos included.");
+    }
 
-<script>
-function hoverAlert() {
-  alert("Welcome to the orchard 🌸 cozy vibes, soft glow, and a little bit of chaos included.");
-}
+    function showStreamAlert() {
+      alert("Stream tip: if it’s not fun, we’re doing it wrong 💗");
+    }
 
-function buttonAlert() {
-  alert("Stream tip: if it’s not fun, we’re doing it wrong 💗");
-}
+    function askFavoriteGame() {
+      var answer = prompt("What kind of cozy game would you bring into the orchard?", "");
+      var output = document.getElementById("promptAnswer");
 
-function askGame() {
-  var answer = prompt("What cozy game would you bring?");
-  if (!answer) {
-    document.getElementById("answer").innerHTML = "No answer? That’s okay… you still belong here 💗";
-  } else {
-    document.getElementById("answer").innerHTML = "Ooo okay… <b>" + answer + "</b>? That fits the orchard perfectly.";
-  }
-}
+      if (answer === null || answer.trim() === "") {
+        output.innerHTML = "No answer? That’s okay… you still belong here 💗";
+      } else {
+        output.innerHTML = "Ooo okay… <strong>" + answer + "</strong>? That fits the orchard perfectly.";
+      }
+    }
 
-function calc() {
-  var n1 = parseInt(document.getElementById("num1").value);
-  var n2 = parseInt(document.getElementById("num2").value);
-  document.getElementById("calcResult").innerHTML = "Total: $" + (n1 * n2);
-}
+    function calculateSetupTotal() {
+      var overlays = parseInt(document.getElementById("overlayCount").value) || 0;
+      var emotes = parseInt(document.getElementById("emoteCount").value) || 0;
+      var panels = parseInt(document.getElementById("panelCount").value) || 0;
 
-var imgs = ["images/sims1.png","images/sims2.png","images/sims3.png","images/sims4.png"];
-var i = 0;
+      var overlayCost = overlays * 15;
+      var emoteCost = emotes * 8;
+      var panelCost = panels * 6;
+      var total = overlayCost + emoteCost + panelCost;
 
-function changeImg() {
-  i = (i+1)%imgs.length;
-  document.getElementById("img").src = imgs[i];
-}
+      document.getElementById("calcResult").innerHTML =
+        "Estimated content setup total: <strong>$" + total.toFixed(2) + "</strong><br>" +
+        "Overlays: $" + overlayCost.toFixed(2) +
+        " | Emotes: $" + emoteCost.toFixed(2) +
+        " | Panels: $" + panelCost.toFixed(2);
+    }
 
-function popup() {
-  var win = window.open("", "", "width=300,height=200");
-  win.document.write("<h2>Thanks for visiting my little corner of the orchard 🍒</h2>");
-}
-</script>
+    var featureImages = [
+      {
+        src: "images/sims1.png",
+        caption: "A cozy Sims 3 stream moment from the orchard."
+      },
+      {
+        src: "images/sims2.png",
+        caption: "A softer family moment captured during a livestream."
+      },
+      {
+        src: "images/sims3.png",
+        caption: "Carving some pumpkins!"
+      },
+      {
+        src: "images/sims4.png",
+        caption: "Painting a scenic view."
+      }
+    ];
 
+    var featureIndex = 0;
+
+    function nextFeatureImage() {
+      featureIndex++;
+      if (featureIndex >= featureImages.length) {
+        featureIndex = 0;
+      }
+
+      var img = document.getElementById("featureImage");
+      var cap = document.getElementById("featureCaption");
+
+      img.src = featureImages[featureIndex].src;
+      img.alt = featureImages[featureIndex].caption;
+      cap.textContent = featureImages[featureIndex].caption;
+
+      img.style.transform = "scale(1.03)";
+      setTimeout(function() {
+        img.style.transform = "scale(1)";
+      }, 250);
+    }
+
+    function openOrchardPopup() {
+      var popup = window.open("", "orchardPopup", "width=430,height=320,left=200,top=150");
+
+      popup.document.write(`
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <title>Welcome to the Orchard</title>
+          <style>
+            body {
+              font-family: Georgia, serif;
+              background: #fff7fb;
+              color: #6b2d45;
+              text-align: center;
+              padding: 28px;
+            }
+            h1 {
+              color: #8e4267;
+            }
+            button {
+              background: #b86b89;
+              color: white;
+              border: none;
+              padding: 10px 16px;
+              border-radius: 999px;
+              cursor: pointer;
+              font: inherit;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>Welcome to the Orchard</h1>
+          <p>Thanks for visiting my little corner of the orchard 🍒</p>
+          <p>This pop-up window was created with JavaScript and styled to match my site.</p>
+          <button onclick="window.close()">Close Window</button>
+        </body>
+        </html>
+      `);
+
+      popup.document.close();
+      popup.focus();
+    }
+  </script>
+
+  <script src="scripts/cherry-orchard-slideshow.js"></script>
 </body>
 </html>
